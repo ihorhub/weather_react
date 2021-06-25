@@ -1,40 +1,51 @@
 import React,{useCallback, useEffect,useState} from 'react'
 import {usePosition} from './position'
-import {Constant} from './constant'
+
 
 
 export const DayWeather=()=> { 
-    const {key, _url}=Constant
-    const [day,setDay]=useState([])
-    const {latitude,longitude}=usePosition([])
-
-    
+    const key="7f11636c6332ec6d8c717f0d2d6646d9";
+    const _url="http://api.openweathermap.org/data/2.5/weather?"; 
    
+    const {latitude,longitude}=usePosition([])
+    const [day,setDay]=useState([])
+    const [city,setCity]=useState()
+      
+
+    const changeHandler = (event) => {
+        setCity({ ...city, [event.target.city]: event.target.value })
+      }
+   console.log(city)
     const getDayWeather=useCallback(()=>{
         try{
             return (fetch(`${_url}lat=${latitude}&lon=${longitude}&appid=${key}`))
             .then(res => res.json())
-            .then(json=>{setDay(json)})
+            .then(res=>{setDay(res)})
         }catch(e){
             console.log(e)
-        }          
-        const getCityWeather=useCallback(()=>{
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }    },[])      
+    
+        const getCityWeather=()=>{
             try{
-                return (fetch(`${_url}lat=${latitude}&lon=${longitude}&appid=${key}`))
+                return (fetch(`${_url}q=${city}&appid=${key}`))
                 .then(res => res.json())
-                .then(json=>{setDay(json)})
+                .then(res=>{setDay(res)})
             }catch(e){
                 console.log(e)
             }  
-    },[latitude,longitude])
+    }
     console.log(day)
+
 useEffect(() => {
     getDayWeather()   
 }, [getDayWeather])
+
 useEffect(() => {
     getCityWeather()
     
-}, [])
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [city])
 
     return (
         <div>            
@@ -45,9 +56,9 @@ useEffect(() => {
                   placeholder="Search... "
                   id="surname"
                   type="text"
-                  name="city"
+                  name="city name"
                   className="search-bar"
-                  value={}
+                  value={city}
                   onChange={changeHandler}
                 />
                 <button onClick={getCityWeather}> search city</button>

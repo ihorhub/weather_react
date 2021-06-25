@@ -6,24 +6,10 @@ import './App.css';
 
 function App() {
 
-  const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({});
-
-
-  return (
-  <div>
-           
+  return (  <div>          
 
 
 <DayWeather/>
-
-
-
-
-
-
-
-
 
   </div>
   );
