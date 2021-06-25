@@ -2,9 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
+.app-style {
   height: 40vmin;
   pointer-events: none;
+  background-image: ;
 }
 
 @media (prefers-reduced-motion: no-preference) {
