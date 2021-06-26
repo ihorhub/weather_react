@@ -1,22 +1,31 @@
 import React from 'react'
 
-export const dayList=({data})=> {
+export const DayList=({data})=> {
+console.log(data)
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let date= new Date(data.dt)
+let numberDay=date.getDay()
+let day=days[numberDay]
+
+
 
     return (
-        <div> {data&&        <ul>
-            <li>{data.city.name}</li>             
-            <li>{data.day.temp}°С</li> 
-             <li>{Math.round( data.list.temp.night-273)}°С</li> 
-             <li>{Math.round( data.list.temp.eve-273)}°С</li> 
-             <li>{Math.round( data.list.temp.morn-273)}°С</li> 
-             <li>{data.list.humidity}% </li>
-            <li>{data.list.pressure}mb hPa</li>
-            <li>{data.list.clouds}</li>
-            <li>{data.list.speed}m/c</li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul> }
+        <div>   {data.name&& 
+            <div>
+                 <ul>
+            <li>{data.name}</li>                  
+            <li>{day}</li>                  
+                    
+              <li>{Math.round( data.main.temp-273)}°С</li> 
+             <li>{Math.round( data.main.feels_like-273)}°С</li>           
+             <li>{data.main.humidity}% </li>
+            <li>{data.main.pressure}mb hPa</li>
+            <li>{data.weather[0].main}</li>
+            <li>{data.wind.speed}m/c</li> 
+           
+        </ul>
+                    </div> 
+        }              
         
         </div>
     )
