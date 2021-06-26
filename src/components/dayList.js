@@ -12,19 +12,27 @@ let day=days[numberDay]
     return (
         <div>   {data.name&& 
             <div>
-                 <ul>
-            <li>{data.name}</li>                  
-            <li>{day}</li>                  
+           <div className="location-box">
+           <p className="location">{data.name}</p>                  
+            <p className="date">{day}</p>  
+            </div>   
+                           
+           <div className="weather-box ">
+           <p className="temp">{Math.round( data.main.temp-273)}°С</p> 
+         </div>
+          
+<div className="weather-main">
+           <p className="weather">{data.weather[0].main}</p>
+           <p className="humidity">{data.main.humidity}% </p>
+            <p className="pressure">{data.main.pressure}mb hPa</p>           
+            <p className="wind">{data.wind.speed}m/c</p>  
+
+</div>
+            
+           </div>
+              
+        
                     
-              <li>{Math.round( data.main.temp-273)}°С</li> 
-             <li>{Math.round( data.main.feels_like-273)}°С</li>           
-             <li>{data.main.humidity}% </li>
-            <li>{data.main.pressure}mb hPa</li>
-            <li>{data.weather[0].main}</li>
-            <li>{data.wind.speed}m/c</li> 
-           
-        </ul>
-                    </div> 
         }              
         
         </div>

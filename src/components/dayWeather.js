@@ -1,15 +1,18 @@
 import React,{useCallback, useEffect,useState} from 'react'
 import {usePosition} from './position'
+import { DayList } from './dayList';
 
 
 
 export const DayWeather=()=> { 
     const key ="550016b522e796d4a34c63549a318c92";
-    const _url ="http://api.openweathermap.org/data/2.5/forecast/daily?"; 
-    const cnt =7   
-  
-    const {latitude,longitude}=usePosition('')
-    const [day,setDay]=useState({})
+    const _url1 ="https://api.openweathermap.org/data/2.5/onecall?"; 
+    const _url2 ="https://api.openweathermap.org/data/2.5/weather?q="; 
+    const part ="hourly"   
+    const cnt="7"
+
+    const {latitude,longitude}=usePosition({})
+    const [day,setDay]=useState([])
     const [week,setWeek]=useState({})
     const [city,setCity]=useState('')
       
@@ -24,7 +27,7 @@ export const DayWeather=()=> {
     const getGeoWeather=useCallback(()=>{     
         
             try{
-                return (fetch(`${_url}lat=${latitude}&lon=${longitude}&appid=${key}`))
+                return (fetch(`${_url1}lat=${latitude}&lon=${longitude}&exclude=${part}&appid=${key}`))
                 .then(res => res.json())
                 .then(res=>{setWeek(res)})
             }catch(e){
@@ -34,23 +37,17 @@ export const DayWeather=()=> {
         console.log(week)   
 
         const getCityWeather=(e)=>{            
-            if(key){
+          
                 try{
-                    return (fetch(`${_url}q=${city}&cnt=${cnt}&cnt=${cnt}&appid=${key}`))
+                    return (fetch(`${_url2}${city}&cnt=${cnt}&appid=${key}`))
                     .then(res => res.json())
                     .then(res=>{setDay(res)})                    
                 }catch(e){
                     console.log(e)
                 }  
                setDay('')
-            }
-            try{
-                return (fetch(`${_url}q=${city}&appid=${key}`))
-                .then(res => res.json())
-                .then(res=>{setDay(res)})
-            }catch(e){
-                console.log(e)
-            }  
+            
+       
     }
     console.log(day)
 
@@ -86,12 +83,11 @@ useEffect(() => {
                 <button className="btnS" onClick={getCityWeather}> search city</button>
                 <button className="btnW" onClick={getGeoWeather}>get geo weather</button> 
 </div>
-                 {week.map(el=>(<datalist data={el} key={el.id}/>))} 
-       
-        
-      
-            
 
+{/* {day.map(el=>(<DayList data={el} key={el.id}/>  ))} */}
+<DayList data={day} />  )
+  
+                              
         </div>
     )
 }
