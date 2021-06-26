@@ -6,11 +6,13 @@ import './App.css';
 
 function App() {
 
-  return (  <div>          
-
-
-<DayWeather/>
-
+  return ( 
+    <div > 
+   
+     
+  
+      <DayWeather />
+   
   </div>
   );
 }

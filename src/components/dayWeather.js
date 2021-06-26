@@ -4,29 +4,46 @@ import {usePosition} from './position'
 
 
 export const DayWeather=()=> { 
-    const key="7f11636c6332ec6d8c717f0d2d6646d9";
-    const _url="http://api.openweathermap.org/data/2.5/weather?"; 
-   
-    const {latitude,longitude}=usePosition([])
-    const [day,setDay]=useState([])
-    const [city,setCity]=useState()
+    const key ="550016b522e796d4a34c63549a318c92";
+    const _url ="http://api.openweathermap.org/data/2.5/forecast/daily?"; 
+    const cnt =7   
+  
+    const {latitude,longitude}=usePosition('')
+    const [day,setDay]=useState({})
+    const [week,setWeek]=useState({})
+    const [city,setCity]=useState('')
       
 
     const changeHandler = (event) => {
-        setCity({ ...city, [event.target.city]: event.target.value })
+        setCity(event.target.value)
+      
       }
    console.log(city)
-    const getDayWeather=useCallback(()=>{
-        try{
-            return (fetch(`${_url}lat=${latitude}&lon=${longitude}&appid=${key}`))
-            .then(res => res.json())
-            .then(res=>{setDay(res)})
-        }catch(e){
-            console.log(e)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        }    },[])      
-    
-        const getCityWeather=()=>{
+
+
+    const getGeoWeather=useCallback(()=>{     
+        
+            try{
+                return (fetch(`${_url}lat=${latitude}&lon=${longitude}&appid=${key}`))
+                .then(res => res.json())
+                .then(res=>{setWeek(res)})
+            }catch(e){
+                console.log(e)          
+            }         
+        },[latitude, longitude])      
+        console.log(week)   
+
+        const getCityWeather=(e)=>{            
+            if(key){
+                try{
+                    return (fetch(`${_url}q=${city}&cnt=${cnt}&cnt=${cnt}&appid=${key}`))
+                    .then(res => res.json())
+                    .then(res=>{setDay(res)})                    
+                }catch(e){
+                    console.log(e)
+                }  
+               setDay('')
+            }
             try{
                 return (fetch(`${_url}q=${city}&appid=${key}`))
                 .then(res => res.json())
@@ -38,20 +55,22 @@ export const DayWeather=()=> {
     console.log(day)
 
 useEffect(() => {
-    getDayWeather()   
-}, [getDayWeather])
+    getGeoWeather()   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
 useEffect(() => {
     getCityWeather()
     
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [city])
+}, [])
 
     return (
-        <div>            
- <div className="app-style ">         
+        <div className="app-style ">            
+      
 
          <div className="search-box">
+
           <input
                   placeholder="Search... "
                   id="surname"
@@ -61,20 +80,15 @@ useEffect(() => {
                   value={city}
                   onChange={changeHandler}
                 />
-                <button onClick={getCityWeather}> search city</button>
-                <button onClick={getDayWeather}>get current weather</button>                
+                            
 </div>
-            <ul>
-              <li>{day.name}</li>             
-              {/* <li>{day.main}°С</li> */}
-              {/* <li>{day.main.feels_like}°С</li> 
-               <li>{day.main.humidity}% </li>
-              <li>{day.main.pressure}mb hPa</li> */}
-              <li></li>
-              <li></li>
-              <li></li>
-          </ul>  
-          </div>
+<div className="btn-container">
+                <button className="btnS" onClick={getCityWeather}> search city</button>
+                <button className="btnW" onClick={getGeoWeather}>get geo weather</button> 
+</div>
+                 {week.map(el=>(<datalist data={el} key={el.id}/>))} 
+       
+        
       
             
 
