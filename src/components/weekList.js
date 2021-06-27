@@ -16,7 +16,7 @@ export const WeekList = ({ dataWeek }) => {
     let date = new Date(dd)
     let numberDay = date.getDay()
     let day = days[numberDay]
-    return `${day}`
+    return day
   }
 
   return (
@@ -30,32 +30,37 @@ export const WeekList = ({ dataWeek }) => {
               <p className="temp">
                 {Math.round(dataWeek.current.temp - 273)}°С
                 <img
-                  className=""
                   src={`${url}${dataWeek.current.weather[0].icon}@2x.png`}
                   alt="icon"
                 />
               </p>
             </div>
           </div>
-          <div>
+          <div className="week-box">
             {dataWeek.daily.map((item) => (
               <div className="class-week">
-                <ul>
-                  <li>
-                    {Math.round(item.temp.day - 273)}°С
-                    <img
-                      className=""
-                      src={`${url}${item.weather[0].icon}@2x.png`}
-                      alt="icon"
-                    />
-                  </li>
-                  <li>{Math.round(item.temp.night - 273)}°С</li>
-                  <li>{Math.round(item.temp.eve - 273)}°С</li>
-                  <li>{item.weather[0].description}</li>
-                  <li>{item.humidity}% </li>
-                  <li>{item.pressure}mb hPa</li>
-                  <li>{item.wind_speed}m/c</li>
-                </ul>
+                <p className="weekSt">{dayBuilder(item.dt)}</p>
+                <p className="weekSt">
+                  day:
+                  {Math.round(item.temp.day - 273)}°С
+                </p>
+                <p>
+                  <img
+                    className="classImg"
+                    src={`${url}${item.weather[0].icon}@2x.png`}
+                    alt="icon"
+                  />
+                </p>
+                <p className="weekSt">
+                  night: {Math.round(item.temp.night - 273)}°С
+                </p>
+                <p className="weekSt">
+                  eve: {Math.round(item.temp.eve - 273)}°С
+                </p>
+                <p className="weekSt">{item.weather[0].description}</p>
+                <p className="weekSt">H: {item.humidity}% </p>
+                <p className="weekSt">P: {item.pressure}mb hPa</p>
+                <p className="weekSt">Wind: {item.wind_speed}m/c</p>
               </div>
             ))}
           </div>
