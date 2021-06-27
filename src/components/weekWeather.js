@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function weekWeather({weekData}) {
-    return (
-        <div> 
-   {/* <ul>week page
+export default function weekWeather({}) {
+  return (
+    <div>
+      {/* <ul>week page
             <li>{data.city.name}</li>             
             <li>{data.day.temp}°С</li> 
              <li>{Math.round( data.list.temp.night-273)}°С</li> 
@@ -17,6 +17,6 @@ export default function weekWeather({weekData}) {
             <li></li>
             <li></li>
         </ul>  */}
-        </div>
-    )
+    </div>
+  )
 }
