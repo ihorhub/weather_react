@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function weekWeather() {
+export default function weekWeather({weekData}) {
     return (
         <div> 
    {/* <ul>week page
