@@ -103,9 +103,8 @@
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.weather-box {
- 
-}
+
+
 
 .weather-main{
   display: flex;
@@ -113,7 +112,7 @@
   align-items: center;
 
 }
-.weather-main .weather  ,.humidity,
+.weather-main  .main,.humidity,
 .pressure,
 .weather,
 .wind{

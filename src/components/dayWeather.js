@@ -9,7 +9,7 @@ export const DayWeather=()=> {
     const _url1 ="https://api.openweathermap.org/data/2.5/onecall?"; 
     const _url2 ="https://api.openweathermap.org/data/2.5/weather?q="; 
     const part ="hourly"   
-    const cnt="7"
+    const cnt=7
 
     const {latitude,longitude}=usePosition({})
     const [day,setDay]=useState([])
