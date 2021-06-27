@@ -1,6 +1,7 @@
 import React,{useCallback, useEffect,useState} from 'react'
 import {usePosition} from './position'
 import { DayList } from './dayList';
+import { WeekList } from './weekList';
 
 
 
@@ -84,8 +85,9 @@ useEffect(() => {
                 <button className="btnW" onClick={getGeoWeather}>get geo weather</button> 
 </div>
 
-{/* {day.map(el=>(<DayList data={el} key={el.id}/>  ))} */}
-<DayList data={day} />  )
+
+<DayList data={day} />  
+<WeekList dataWeek={week} />  
   
                               
         </div>
