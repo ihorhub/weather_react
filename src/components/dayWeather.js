@@ -19,10 +19,12 @@ export const DayWeather = () => {
     setDay('')
     setWeek('')
   }
+  const clearInput = () => {
+    document.getElementById('cityName').reset()
+  }
   const changeHandler = (event) => {
     setCity(event.target.value)
   }
-  console.log(city)
 
   const getGeoWeather = useCallback(() => {
     getClear()
@@ -51,6 +53,7 @@ export const DayWeather = () => {
     } catch (e) {
       console.log(e)
     }
+    clearInput()
   }
 
   useEffect(() => {
@@ -69,7 +72,7 @@ export const DayWeather = () => {
       <div className="search-box">
         <input
           placeholder="Search... "
-          id="surname"
+          id="cityName"
           type="text"
           name="city name"
           className="search-bar"

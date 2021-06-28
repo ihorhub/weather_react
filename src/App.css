@@ -8,6 +8,9 @@
   background-position: center center;
   color: white;
   text-shadow: 2px 2px 1px black;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px 0px 16px 16px;
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
 }
 .search-box {
   width: 480px;
@@ -21,8 +24,8 @@
   display: block;
   width: 100%;
   padding: 15px;
+  margin: 0 px;
 
-  appearance: none;
   background: none;
   border: none;
   outline: none;
@@ -31,8 +34,9 @@
   border-radius: 0px 0px 16px 16px;
   box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
 
-  color: #313131;
-  font-size: 15px;
+  color: #66505070;
+
+  font-size: 20px;
   transition: 0.4s ease;
 }
 
@@ -105,20 +109,15 @@
 .pressure,
 .weather,
 .wind {
-  position: relative;
-
   display: inline-block;
   margin: 10px auto;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-
   padding: 7px 7px;
-
   color: #fff;
   font-size: 35px;
   font-weight: 400;
 
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
 }
@@ -132,7 +131,7 @@
 .class-week {
   display: table-cell;
   margin: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(129, 120, 120, 0.493);
   border-radius: 5px;
   padding: 2px;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
@@ -140,13 +139,12 @@
 .weekSt {
   display: inline-block;
   margin: 3px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(155, 140, 140, 0.493);
   border-radius: 5px;
-  padding: 3px 5px;
-  color: rgb(26, 12, 12);
-  font-size: 10px;
+  padding: 3px 4px;
+  font-size: 11px;
   font-weight: 700;
-  text-shadow: 2px 1px rgba(210, 210, 219, 0.5);
+
   text-align: center;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
 }

@@ -44,13 +44,13 @@ export const WeekList = ({ dataWeek }) => {
                   day:
                   {Math.round(item.temp.day - 273)}°С
                 </p>
-                <p>
-                  <img
-                    className="classImg"
-                    src={`${url}${item.weather[0].icon}@2x.png`}
-                    alt="icon"
-                  />
-                </p>
+
+                <img
+                  className="classImg"
+                  src={`${url}${item.weather[0].icon}@2x.png`}
+                  alt="icon"
+                />
+
                 <p className="weekSt">
                   night: {Math.round(item.temp.night - 273)}°С
                 </p>

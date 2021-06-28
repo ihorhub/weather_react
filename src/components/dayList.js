@@ -38,9 +38,9 @@ export const DayList = ({ data }) => {
           </div>
 
           <div className="weather-main">
-            <p className="humidity">{data.main.humidity}% </p>
-            <p className="pressure">{data.main.pressure}mb hPa</p>
-            <p className="wind">{data.wind.speed}m/c</p>
+            <p className="humidity">H: {data.main.humidity}% </p>
+            <p className="pressure">P: {data.main.pressure}mb hPa</p>
+            <p className="wind">Wind: {data.wind.speed}m/c</p>
             <p className="main">{data.weather[0].description}</p>
           </div>
         </div>

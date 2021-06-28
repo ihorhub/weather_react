@@ -1,6 +1,5 @@
-body html {
-  width: 1028px;
-  height: 770px;
-  border: 5px dotted red;
-  background-color: blue;
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: teal;
 }
